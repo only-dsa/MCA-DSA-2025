@@ -21,9 +21,7 @@ class Permutations {
             if(visited[i] == false) {
                 visited[i] = true;
                 list.add(nums[i]);
-                queen[row][col] = 'Q'
                 backTracking(nums, visited, list);
-                 queen[row][col] = '.'
                 visited[i] = false;
                 list.remove(list.size()-1);
             }
