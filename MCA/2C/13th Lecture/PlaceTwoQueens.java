@@ -1,3 +1,5 @@
+// OneNote Link:- https://1drv.ms/o/c/d5ef4fad675c6c2f/Ei9sXGetT-8ggNWAAAAAAAAB0M3lPSNdqbbSKwLYZYKKAg?e=S9ZWhy
+
 class PlaceTwoQueens {
     public static void main(String[] args) {
         int queen = 2;

@@ -17,14 +17,14 @@ public class ValidPalindrome {
             //     start++;
             // }
 
-            while(!Character.isLetterOrDigit(s.charAt(start)) && start < end){
+            while(start < end && !Character.isLetterOrDigit(s.charAt(start))){
                 start++;
             }
 
             // while(end is not character and end>start) {
             //     end --
             // }
-            while(!Character.isLetterOrDigit(s.charAt(end)) && end > start){
+            while(end > start && !Character.isLetterOrDigit(s.charAt(end))){
                 end--;
             }
                 System.out.println(s.charAt(start) + "  " + s.charAt(end));

@@ -1,4 +1,4 @@
-// OneNote Link:- https://1drv.ms/o/s!Ai9sXGetT-_VfDAaT6aQi5e26wk?e=cJVFSZ
+// OneNote Link:- https://1drv.ms/o/c/d5ef4fad675c6c2f/Ei9sXGetT-8ggNV8AAAAAAABC61VCayPHysT_yPdrj7AEQ?e=PvzGUF
 // https://leetcode.com/problems/rotate-array/description/
 
 
@@ -6,7 +6,20 @@ class RotateArray {
     public static void main(String[] args) {
         int[] nums = {1,2,3,4,5,6,7};
         int k = 3;
-        rotate(nums, k);
+        rotate1(nums, k); // 1st approach
+        rotate(nums, k);  // 2nd Approach
+    }
+
+    public static void rotate1(int[] nums, int k) {
+        int len = nums.length;
+        k = k % len;
+        for(int rot = 1; rot <= k; rot++) {
+            int temp = nums[len - 1];
+            for(int i = nums.length - 2; i>=0; i--) {
+                nums[i+1] = nums[i];
+            }
+            nums[0] = temp;
+        }
     }
 
     public static void rotate(int[] nums, int k) {

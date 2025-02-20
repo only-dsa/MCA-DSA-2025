@@ -7,85 +7,54 @@ import java.util.Arrays;
 
 class MergeSort {
 
-  // Merge two sub arrays L and M into array
-  void merge(int array[], int p, int q, int r) {
-
-    int n1 = q - p + 1;
-    int n2 = r - q;
-
-    int L[] = new int[n1];
-    int M[] = new int[n2];
-
-    // fill the left and right array
-    for (int i = 0; i < n1; i++)
-      L[i] = array[p + i];
-    for (int j = 0; j < n2; j++)
-      M[j] = array[q + 1 + j];
-
-    // Maintain current index of sub-arrays and main array
-    int i, j, k;
-    i = 0;
-    j = 0;
-    k = p;
-
-    // Until we reach either end of either L or M, pick larger among
-    // elements L and M and place them in the correct position at A[p..r]
-    // for sorting in descending
-    // use if(L[i] >= <[j])
-    while (i < n1 && j < n2) {
-      if (L[i] <= M[j]) {
-        array[k] = L[i];
-        i++;
-      } else {
-        array[k] = M[j];
-        j++;
-      }
-      k++;
+  public static int[] merge2SortedArray(int[] nums1, int[] nums2) {
+    int m = nums1.length;
+    int n = nums2.length;
+    int[] merged = new int[m+n];
+    int s1 = 0, s2 = 0;
+    int k = 0;
+    while(s1 < m && s2 < n) {
+        // compare
+        if(nums1[s1] < nums2[s2]) {
+            merged[k++] = nums1[s1];
+            s1++;
+        } else {
+            merged[k++] = nums2[s2];
+            s2++;
+        }
     }
 
-    // When we run out of elements in either L or M,
-    // pick up the remaining elements and put in A[p..r]
-    while (i < n1) {
-      array[k] = L[i];
-      i++;
-      k++;
+    while(s1 < m) {
+        merged[k++] = nums1[s1];
+        s1++;
     }
 
-    while (j < n2) {
-      array[k] = M[j];
-      j++;
-      k++;
+    while(s2 < n) {
+        merged[k++] = nums2[s2];
+        s2++;
     }
+
+    return merged;
   }
 
-  // Divide the array into two sub arrays, sort them and merge them
-  void mergeSort(int array[], int left, int right) {
-    if (left < right) {
-
-      // m is the point where the array is divided into two sub arrays
-      int mid = (left + right) / 2;
-
-      // recursive call to each sub arrays
-      mergeSort(array, left, mid);
-      mergeSort(array, mid + 1, right);
-
-      // Merge the sorted sub arrays
-      merge(array, left, mid, right);
+  static int[] mergeSort(int[] nums, int start, int end) {
+    if(start == end) {
+        int[] arr = new int[1];
+        arr[0] = nums[start]; // nums[end]
+        return arr;
     }
+
+    int mid = (start + end) / 2;
+    int[] firstPart = mergeSort(nums, start, mid); // mid include
+    int[] secondPart = mergeSort(nums, mid+1, end);
+    return merge2SortedArray(firstPart, secondPart);
   }
 
   public static void main(String args[]) {
 
     // created an unsorted array
-    int[] array = { 6, 5, 12, 10, 9, 1 };
+    int[] nums = { 6, 5, 12, 10, 9, 1 };
 
-    Main ob = new Main();
-
-    // call the method mergeSort()
-    // pass argument: array, first index and last index
-    ob.mergeSort(array, 0, array.length - 1);
-
-    System.out.println("Sorted Array:");
-    System.out.println(Arrays.toString(array));
+    int[] ans = mergeSort(nums, 0, nums.length-1);
   }
 }

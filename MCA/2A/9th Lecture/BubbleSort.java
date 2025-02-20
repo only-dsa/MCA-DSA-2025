@@ -1,14 +1,14 @@
-// OneNote Link:- https://1drv.ms/o/s!Ai9sXGetT-_VfDAaT6aQi5e26wk?e=cJVFSZ
+// OneNote Link:- https://1drv.ms/o/c/d5ef4fad675c6c2f/Ei9sXGetT-8ggNV8AAAAAAABC61VCayPHysT_yPdrj7AEQ?e=PvzGUF
 
 // Optimized java implementation of Bubble sort
 
 class BubbleSort {  
     void bubbleSort(int arr[])
     {
-        int n = arr.length;
+        int len = arr.length;
       
-        for (int i = 0; i < n - 1; i++)
-            for (int j = 0; j < n - i - 1; j++)
+        for (int pass = 1; pass < len; pass++) {
+            for (int j = 0; j < len - pass; j++) {
                 if (arr[j] > arr[j + 1]) {
                   
                     // swap temp and arr[i]
@@ -16,6 +16,8 @@ class BubbleSort {
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
                 }
+            }
+        }
     }
 
     // Driver method to test above

@@ -1,3 +1,5 @@
+// OneNote Link:- https://1drv.ms/o/c/d5ef4fad675c6c2f/Ei9sXGetT-8ggNV8AAAAAAABC61VCayPHysT_yPdrj7AEQ?e=PvzGUF
+
 class NQueens {
     List<List<String>> ans = new ArrayList<>();
     public List<List<String>> solveNQueens(int n) {

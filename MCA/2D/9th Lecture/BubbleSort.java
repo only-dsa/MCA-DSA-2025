@@ -3,10 +3,10 @@
 class BubbleSort {  
     void bubbleSort(int arr[])
     {
-        int n = arr.length;
+        int len = arr.length;
       
-        for (int i = 0; i < n - 1; i++)
-            for (int j = 0; j < n - i - 1; j++)
+        for (int pass = 1; pass < len; pass++) {
+            for (int j = 0; j < len - pass; j++) {
                 if (arr[j] > arr[j + 1]) {
                   
                     // swap temp and arr[i]
@@ -14,6 +14,8 @@ class BubbleSort {
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
                 }
+            }
+        }
     }
 
     // Driver method to test above

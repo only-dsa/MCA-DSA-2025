@@ -1,24 +1,26 @@
-// OneNote Link:- https://1drv.ms/o/s!Ai9sXGetT-_VfDAaT6aQi5e26wk?e=cJVFSZ
+// OneNote Link:- https://1drv.ms/o/c/d5ef4fad675c6c2f/Ei9sXGetT-8ggNV8AAAAAAABC61VCayPHysT_yPdrj7AEQ?e=PvzGUF
 // https://leetcode.com/problems/search-insert-position/description/
 
 
 public class SearchInsertPosition {
     public static int searchInsert(int[] nums, int target) {
-        int start = 0 , end = nums.length-1;
-        while(start <= end) {
-            int mid = (start+end)/2;
+        int left = 0;
+        int right = nums.length  - 1;
+        while(left <= right) {
+            int mid = (left+right)/2;
             if(nums[mid] == target) {
                 return mid;
-            } else if(nums[mid] > target) {
-                // [1,2,3,4,mid,6,7] ---> target = 3, mid = 5
-                end = mid - 1;
-
-            } else if(nums[mid] < target) {
-                start = mid + 1;
+            } else {
+                if(nums[mid] < target) {
+                    left = mid + 1;
+                } else {
+                    // nums[mid] > target
+                    right = mid - 1;
+                }
             }
         }
 
-        return -1;
+        return left;
     }
 
     public static void main(String[] args) {
